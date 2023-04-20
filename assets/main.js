@@ -34,6 +34,13 @@ createApp({
         
         }
     },
+
+    //essenziale per attivare la temporizzazione 
+    created(){
+        this.autoScroll()
+    },
+
+
     methods: {
         
         /*tramite un funzione originata dall'elemento '@click' 
@@ -64,7 +71,13 @@ createApp({
 
                 this.imgAttuale = this.slides.length - 1
             }
+        },
 
+        /* creiamo una funzione che ci permetterà  di temporizzare e rendere automatico il @click di next  */
+        autoScroll(){
+            setInterval( () =>{
+                this.next()
+            }, 2000 ) 
         }
 
     }
