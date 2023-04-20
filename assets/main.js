@@ -5,6 +5,8 @@ createApp({
     return {
         //impostiamo un parametro che prendera traccia della posizione dell'immagine interessaata
         imgAttuale: 0,
+        //parametro che permetterà di bloccare la temporizzazione col passaggio del mouse
+        stopInterval: null,
 
         slides: [
             {
@@ -75,10 +77,18 @@ createApp({
 
         /* creiamo una funzione che ci permetterà  di temporizzare e rendere automatico il @click di next  */
         autoScroll(){
-            setInterval( () =>{
+            this.stopInterval = setInterval( () =>{
                 this.next()
-            }, 2000 ) 
+            }, 1500 ) 
+        },
+
+        //funzione che permette lo stop della temporizzazione 
+        stopScroll(){
+            clearInterval( this.stopInterval)
+            this.stopInterval = null
         }
+
+
 
     }
 }).mount('#app')
