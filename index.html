@@ -33,12 +33,17 @@
                 </div>
 
                 <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
-                    <div class="thumb active">
-                        <img src="./assets/img/01.webp" alt="Svezia" />
+
+                    <div class="prev" @click="prev"></div>
+                    <div class="next" @click="next"></div>
+                    <!-- utilizziamo il ciclo richiamando utti gli elemetnti e la posizione di tutti gli oggetti presenti nell'arrey, 
+                        e tramite una variabile soldatino e un acondizione ternaria attiviamo una classe -->
+                    <div v-for="(element, index) in slides" :key="index" class="thumb"
+                    :class="imgAttuale == index ? 'active' : '' ">
+                        <img :src="element.image" alt="element.title" />
                     </div>
-                    <div class="thumb">
+
+                    <!-- <div class="thumb">
                         <img src="./assets/img/02.webp" alt="Ratchet & Clank" />
                     </div>
                     <div class="thumb">
@@ -49,13 +54,14 @@
                     </div>
                     <div class="thumb">
                         <img src="./assets/img/05.webp" alt="Avengers" />
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
         </div>
         
     </div>
+
 
 
 

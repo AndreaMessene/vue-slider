@@ -3,6 +3,8 @@ const { createApp } = Vue
 createApp({
     data() {
     return {
+        //impostiamo un parametro che prendera traccia della posizione dell'immagine interessaata
+        imgAttuale: 0,
 
         slides: [
             {
@@ -34,5 +36,36 @@ createApp({
     },
     methods: {
         
+        /*tramite un funzione originata dall'elemento '@click' 
+        creiamo un sistema che ci permetta di passare all'immagine successiva*/
+        next(){
+
+            console.log('next')
+            
+            this.imgAttuale++
+
+            /* se il nostro soldatino è supereiore alla posizione del nostro ultimo oggetto, la classe
+            active ritorna al primo oggetto  */
+            if(this.imgAttuale > this.slides.length - 1){
+
+                this.imgAttuale = 0
+            }
+        },
+
+        prev(){
+
+            console.log('prev')
+            
+            this.imgAttuale--
+
+            /* se il nostro soldatino è inferiore alla posizione del primo oggetto, la classe
+            active ritorna all'ultimo oggetto  */
+            if(this.imgAttuale < 0 ){
+
+                this.imgAttuale = this.slides.length - 1
+            }
+
+        }
+
     }
 }).mount('#app')
